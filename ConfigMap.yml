@@ -1,0 +1,12 @@
+apiVersion : v1
+kind : ConfigMap
+metadata:
+  name: configmap-servers
+  namespace: aws-worker-uat
+
+  labels:
+    app: configMapp
+
+data:
+  MYSQL_HOST : 127.0.0.1
+

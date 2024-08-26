@@ -1,0 +1,22 @@
+apiVersion : networking.k8s.io/v1
+kind : Ingress
+metadata:
+  name : ingress
+  namespace: aws-worker-uat
+  labels:
+    app: ingress-deploy
+
+spec:   #LOCAL
+  rules:
+    - host: ghj.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: service-project
+                port:
+                  number: 80
+            pathType: Prefix
+            path: /
+
+

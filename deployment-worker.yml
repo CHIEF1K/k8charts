@@ -1,0 +1,53 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata:
+  name: worker-deployment
+  namespace: aws-worker-uat
+  labels:
+    app : demo-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+       app: demo-voting-app
+  template:
+    metadata:
+      name: worker-deployment
+      labels:
+        app: demo-voting-app
+    spec:
+      containers:
+        - name: worker-app
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+
+#          env:
+#            - name: DB_USERNAME
+#              valueFrom:
+#                secretKeyRef:
+#                  key:  MYSQL_USER
+#                  name : secret
+#            - name: DB_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  key: MYSQL_PASS
+#                  name: secret
+#
+#            - name: DB_HOST
+#              valueFrom:
+#                configMapKeyRef:
+#                  key:  MYSQL_HOST
+#                  name:  configmap-servers
+
+          resources:
+            requests:
+              memory : 20Mi
+              cpu : 5m
+            limits:
+              memory : 40Mi
+              cpu : 9m
+
+
+
