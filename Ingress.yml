@@ -13,7 +13,7 @@ spec:   #LOCAL
         paths:
           - backend:
               service:
-                name: service-project
+                name: service-project # name of your service deployment
                 port:
                   number: 80
             pathType: Prefix
